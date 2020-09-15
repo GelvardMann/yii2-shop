@@ -1,10 +1,11 @@
 <?php
 
-/* @var $this \yii\web\View */
+/* @var $this View */
 /* @var $content string */
 
 use backend\assets\AppAsset;
 use yii\helpers\Html;
+use yii\web\View;
 
 AppAsset::register($this);
 ?>
@@ -21,6 +22,8 @@ AppAsset::register($this);
 </head>
 <body class="blank">
 <?php $this->beginBody() ?>
+
+<div class="container">
 
     <div class="wrap">
         <?= $content ?>

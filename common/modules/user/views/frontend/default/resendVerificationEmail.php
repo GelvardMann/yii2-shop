@@ -1,18 +1,19 @@
 <?php
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \frontend\models\ResetPasswordForm */
+/* @var $model ResetPasswordForm */
 
+use common\modules\user\forms\ResetPasswordForm;
+use common\modules\user\Module;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Resend verification email';
+$this->title = Module::t('module','RESEND_VERIFICATION_EMAIL');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-resend-verification-email">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out your email. A verification email will be sent there.</p>
+    <p><?= Module::t('module','RESEND_VERIFICATION_EMAIL_MESSAGE')?></p>
 
     <div class="row">
         <div class="col-lg-5">
@@ -21,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 
             <div class="form-group">
-                <?= Html::submitButton('Send', ['class' => 'btn btn-primary']) ?>
+                <?= Html::submitButton(Module::t('module', 'SUBMIT'), ['class' => 'btn btn-primary']) ?>
             </div>
 
             <?php ActiveForm::end(); ?>

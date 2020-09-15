@@ -16,7 +16,7 @@ return [
             'csrfParam' => '_csrf-frontend',
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'common\modules\user\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],
@@ -36,14 +36,25 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+    ],
+    'modules' => [
+        'user' => [
+            'class' => 'common\modules\user\Module',
+            'controllerNamespace' => 'common\modules\user\controllers\frontend',
+            'viewPath' => '@common/modules/user/views/frontend',
+            'passwordResetTokenExpire' => 3600,
+        ],
+        'shop' => [
+            'class' => 'common\modules\shop\Module',
+            'controllerNamespace' => 'common\modules\shop\controllers\frontend',
+            'viewPath' => '@common/modules/shop/views/frontend',
+        ],
     ],
     'params' => $params,
 ];

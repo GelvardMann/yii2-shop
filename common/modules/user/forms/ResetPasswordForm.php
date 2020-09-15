@@ -1,10 +1,12 @@
 <?php
-namespace frontend\models;
+namespace common\modules\user\forms;
 
+use common\modules\user\Module;
+use Yii;
+use yii\base\Exception;
 use yii\base\InvalidArgumentException;
 use yii\base\Model;
-use Yii;
-use common\models\User;
+use common\modules\user\models\User;
 
 /**
  * Password reset form
@@ -14,7 +16,7 @@ class ResetPasswordForm extends Model
     public $password;
 
     /**
-     * @var \common\models\User
+     * @var User
      */
     private $_user;
 
@@ -26,12 +28,12 @@ class ResetPasswordForm extends Model
      * @param array $config name-value pairs that will be used to initialize the object properties
      * @throws InvalidArgumentException if token is empty or not valid
      */
-    public function __construct($token, $config = [])
+    public function __construct($token, $timeOut, $config = [])
     {
         if (empty($token) || !is_string($token)) {
             throw new InvalidArgumentException('Password reset token cannot be blank.');
         }
-        $this->_user = User::findByPasswordResetToken($token);
+        $this->_user = User::findByPasswordResetToken($token, $timeout);
         if (!$this->_user) {
             throw new InvalidArgumentException('Wrong password reset token.');
         }
@@ -45,7 +47,17 @@ class ResetPasswordForm extends Model
     {
         return [
             ['password', 'required'],
-            ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+            ['password', 'string', 'min' => 6],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'password' => Module::t('module','PASSWORD'),
         ];
     }
 
@@ -53,6 +65,7 @@ class ResetPasswordForm extends Model
      * Resets password.
      *
      * @return bool if password was reset.
+     * @throws Exception
      */
     public function resetPassword()
     {

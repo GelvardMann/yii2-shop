@@ -1,0 +1,48 @@
+.navbar-default {
+    background-color: #fff;
+    border: none;
+}
+
+.navbar-default li a {
+    text-transform: uppercase;
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .active > a:hover {
+    color: #000;
+    background-color: #fff;
+    transition: .5s;
+}
+
+.dropdown-header {
+    text-transform: capitalize;
+}
+
+textarea {
+    resize: none;
+}
+
+.btn {
+    border-radius: 2px;
+}
+
+.form-control {
+    border-radius: 2px;
+}
+
+.form-control:focus {
+    border: 1px solid #5a6268;
+    box-shadow: none;
+}
+
+.no-photo-user {
+    width: 20px;
+    height: auto;
+    margin-left: 5px;
+}
+
+
+

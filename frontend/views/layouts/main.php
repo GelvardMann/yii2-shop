@@ -1,11 +1,13 @@
 <?php
 
-/* @var $this \yii\web\View */
+/* @var $this View */
+
 /* @var $content string */
 
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\web\View;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
@@ -32,28 +34,33 @@ AppAsset::register($this);
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
+            'class' => 'navbar-default navbar-fixed-top',
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => Yii::t('app', 'HOME'), 'url' => ['/site/index']],
+        ['label' => Yii::t('app', 'SHOP'), 'url' => ['/shop/default/index']],
+        ['label' => Yii::t('app', 'ABOUT'), 'url' => ['/site/about']],
+        ['label' => Yii::t('app', 'CONTACT'), 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => Yii::t('app', 'GUEST'),
+            'items' => [
+                ['label' => Yii::t('app', 'SIGNUP'), 'url' => ['/user/default/signup']],
+                ['label' => Yii::t('app', 'LOGIN'), 'url' => ['/user/default/login']]
+            ]];
     } else {
-        $menuItems[] = '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>';
+        $menuItems[] = ['label' => '<img alt="no foto" src="/uploads/images/noImage.png" class="no-photo-user">',
+            'items' => [
+                '<li class="dropdown-header">'.Yii::$app->user->identity->username.'</li>',
+                ['label' => Yii::t('app', 'PROFILE'), 'url' => '/user/profiles'],
+                ['label' => Yii::t('app', 'LOGOUT'), 'url' => ['/user/logout'], 'linkOptions' => ['data-method' => 'post']],
+
+
+            ]];
     }
     echo Nav::widget([
+        'encodeLabels' => false,
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
     ]);
@@ -72,8 +79,6 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-
-        <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
 

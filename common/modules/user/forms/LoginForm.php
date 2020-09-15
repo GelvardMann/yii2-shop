@@ -1,11 +1,15 @@
 <?php
-namespace common\models;
+namespace common\modules\user\forms;
 
+use common\modules\user\models\User;
+use common\modules\user\Module;
 use Yii;
 use yii\base\Model;
 
 /**
  * Login form
+ *
+ * @property-read User|null $user
  */
 class LoginForm extends Model
 {
@@ -28,6 +32,18 @@ class LoginForm extends Model
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'username' => Module::t('module','USERNAME'),
+            'password' => Module::t('module','PASSWORD'),
+            'rememberMe' => Module::t('module','REMEMBER_ME'),
         ];
     }
 
@@ -58,7 +74,7 @@ class LoginForm extends Model
         if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         }
-        
+
         return false;
     }
 

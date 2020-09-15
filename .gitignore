@@ -6,6 +6,9 @@
 # phpstorm project files
 .idea
 
+# ignore git files
+.git
+
 # netbeans project files
 nbproject
 
