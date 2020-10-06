@@ -45,7 +45,11 @@ AppAsset::register($this);
                 'items' => [
                     ['label' => Module::t('module', 'PRODUCTS'), 'url' => ['/shop/product/index']],
                     ['label' => Module::t('module', 'CATEGORIES'), 'url' => ['/shop/category/index']],
-                    ['label' => Module::t('module', 'OPTIONS'), 'url' => ['/shop/options/index']],
+                    ['label' => Module::t('module', 'TAGS'), 'url' => ['/shop/tag/index']],
+                    ['label' => Module::t('module', 'PRODUCT_TAG'), 'url' => ['/shop/product-tag/index']],
+                    ['label' => Module::t('module', 'ATTRIBUTES'), 'url' => ['/shop/attribute/index']],
+                    ['label' => Module::t('module', 'ATTRIBUTE_VALUES'), 'url' => ['/shop/attribute-value/index']],
+                    ['label' => Module::t('module', 'IMAGES'), 'url' => ['/shop/image/index']],
                     ['label' => Module::t('module', 'STATUSES'), 'url' => ['/shop/status/index']],
                 ]],
             ['label' => Yii::t('app', 'CONTACT'), 'url' => ['/site/contact']],

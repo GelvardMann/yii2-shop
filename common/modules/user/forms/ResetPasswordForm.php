@@ -2,7 +2,6 @@
 namespace common\modules\user\forms;
 
 use common\modules\user\Module;
-use Yii;
 use yii\base\Exception;
 use yii\base\InvalidArgumentException;
 use yii\base\Model;
@@ -25,17 +24,17 @@ class ResetPasswordForm extends Model
      * Creates a form model given a token.
      *
      * @param string $token
+     * @param $timeout
      * @param array $config name-value pairs that will be used to initialize the object properties
-     * @throws InvalidArgumentException if token is empty or not valid
      */
-    public function __construct($token, $timeOut, $config = [])
+    public function __construct($token, $timeout, $config = [])
     {
         if (empty($token) || !is_string($token)) {
-            throw new InvalidArgumentException('Password reset token cannot be blank.');
+            throw new InvalidArgumentException(Module::t('module', 'PASSWORD_RESET_TOKEN_CANNOT_BE_BLANK'));
         }
         $this->_user = User::findByPasswordResetToken($token, $timeout);
         if (!$this->_user) {
-            throw new InvalidArgumentException('Wrong password reset token.');
+            throw new InvalidArgumentException(Module::t('module', 'WRONG_PASSWORD_RESET_TOKEN'));
         }
         parent::__construct($config);
     }

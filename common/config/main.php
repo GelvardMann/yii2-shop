@@ -1,10 +1,10 @@
 <?php
 return [
     'name' => 'SHOP',
-    'language'=>'ru-RU',
+    'language' => 'ru-RU',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'bootstrap' => [
         'common\modules\user\Bootstrap',

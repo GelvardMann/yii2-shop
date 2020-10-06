@@ -16,7 +16,8 @@ class Bootstrap implements BootstrapInterface
 
         $this->registerTranslations($app);
         $this->registerUrlManager($app);
-        Yii::setAlias('@shopUploads',  dirname(dirname(dirname(__DIR__))) . '/frontend/web/uploads/shop');
+        $this->registerFormatter($app);
+        Yii::setAlias('@shopUploads', dirname(dirname(dirname(__DIR__))) . '/frontend/web/uploads/shop');
 
     }
 
@@ -36,18 +37,27 @@ class Bootstrap implements BootstrapInterface
     {
         $app->getUrlManager()->addRules(
             [
-                '<_m:shop>/<controller:category>/<action:view|update|delete>/<id:\d>' => '<_m>/category/<action>',
+                '<_m:shop>/<controller:category>/<action:view|update|delete>/<id:\d+>' => '<_m>/category/<action>',
                 '<_m:shop>/<controller:category>/<action:create>/' => '<_m>/category/<action>',
 
-                'shop/category/<category:[\w_\/-]+>/<id:[\d]+>'=>'shop/default/show',
-                'shop/category/<category:[\w_\/-]+>'=>'shop/default/category',
+                'shop/category/<category:[\w_\/-]+>/<id:[\d]+>' => 'shop/default/show',
+                'shop/category/<category:[\w_\/-]+>' => 'shop/default/category',
 
                 'shop' => 'shop/default/index',
-                'shop/<controller:(product|category|options)>' => 'shop/<controller>/index',
+                'shop/<controller:(product|category|status|image|attribute-value|attribute|product-tag|tag)>' => 'shop/<controller>/index',
                 'shop/<controller:(product|category|options)>/<action:create|view|update|delete>/<id:\d+>' => 'shop/<controller>/<action>',
 
             ]
         );
+    }
+
+    public function registerFormatter(Application $app)
+    {
+
+        $app->getFormatter()->booleanFormat = [
+            '<span class="label label-danger">&cross;</span>',
+            '<span class="label label-success">&check;</span>',
+        ];
     }
 
 }

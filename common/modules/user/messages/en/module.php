@@ -21,10 +21,15 @@ return [
 
     // signup model
     'SIGNUP_MESSAGE' => 'Please fill out the following fields to signup:',
+    'THIS_USERNAME_HAS_ALREADY_BEEN_TAKEN' => 'This username has already been taken.',
+    'THIS_EMAIL_ADDRESS_HAS_ALREADY_BEEN_TAKEN' => 'This email address has already been taken.',
 
     // request password reset token
     'REQUEST_PASS_TOKEN_MESSAGE' => 'Please fill out your email. A verification email will be sent there.',
     'REQUEST_PASSWORD_RESET' => 'Request password reset',
+
+    // password resent request form
+    'ERROR_TOKEN_IS_SENT' => 'Error token is sent',
 
     // Resend verification email model
     'RESEND_VERIFICATION_EMAIL_MESSAGE' => 'Please fill out your email. A verification email will be sent there.',
@@ -35,6 +40,8 @@ return [
     'RESET_PASSWORD' => 'Reset password',
     'PLEASE_CHOOSE_YOUR_NEW_PASSWORD' => 'Please choose your new password:',
     'SAVE' => 'Save',
+    'WRONG_PASSWORD_RESET_TOKEN' => 'Wrong password reset token',
+    'PASSWORD_RESET_TOKEN_CANNOT_BE_BLANK' => 'Wrong password reset token',
 
     // Attribute labels
     'VERIFICATION_CODE' => 'Verification Code',

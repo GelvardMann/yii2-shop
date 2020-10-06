@@ -28,7 +28,7 @@ class ResendVerificationEmailForm extends Model
             ['email', 'exist',
                 'targetClass' => '\common\modules\user\models\User',
                 'filter' => ['status' => User::STATUS_INACTIVE],
-                'message' => 'There is no user with this email address.'
+                'message' => Module::t('module', 'THERE_IS_NO_USER_WITH_THIS_EMAIL_ADDRESS'),
             ],
         ];
     }

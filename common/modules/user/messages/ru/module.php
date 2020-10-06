@@ -35,6 +35,8 @@ return [
     'RESET_PASSWORD' => 'Сброс пароля',
     'PLEASE_CHOOSE_YOUR_NEW_PASSWORD' => 'Пожалуйста, выберите новый пароль:',
     'SAVE' => 'Сохранить',
+    'WRONG_PASSWORD_RESET_TOKEN' => 'Неверный токен сброса пароля',
+    'PASSWORD_RESET_TOKEN_CANNOT_BE_BLANK' => 'Токен сброса пароля не может быть пустым.',
 
     // Attribute labels
     'VERIFICATION_CODE' => 'Проверочный код',

@@ -5,6 +5,7 @@
 /* @var $model ResetPasswordForm */
 
 use common\modules\user\forms\ResetPasswordForm;
+use common\modules\user\Module;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
@@ -23,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'password')->passwordInput(['autofocus' => true]) ?>
 
                 <div class="form-group">
-                    <?= Html::submitButton('Save', ['class' => 'btn btn-primary']) ?>
+                    <?= Html::submitButton(Module::t('module', 'SAVE'), ['class' => 'btn btn-primary']) ?>
                 </div>
 
             <?php ActiveForm::end(); ?>

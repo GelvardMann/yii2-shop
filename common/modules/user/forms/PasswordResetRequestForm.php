@@ -9,6 +9,8 @@ use common\modules\user\models\User;
 
 /**
  * Password reset request form
+ *
+ * @property-read User|null $user
  */
 class PasswordResetRequestForm extends Model
 {
@@ -40,7 +42,7 @@ class PasswordResetRequestForm extends Model
             ['email', 'exist',
                 'targetClass' => '\common\modules\user\models\User',
                 'filter' => ['status' => User::STATUS_ACTIVE],
-                'message' => 'There is no user with this email address.'
+                'message' => Module::t('module', 'THERE_IS_NO_USER_WITH_THIS_EMAIL_ADDRESS'),
             ],
         ];
     }
