@@ -45,6 +45,8 @@ phpunit.phar
 /backend/web/index-test.php
 /backend/web/robots.txt
 
-# ignore fixtures
+# ignore uploads folder
+/frontend/web/uploads
 
+# ignore fixtures
 /common/fixtures
